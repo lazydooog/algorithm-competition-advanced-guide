@@ -2,30 +2,12 @@
 * @Description: 95. 费解的开关
 * @Author: Xiaobin Ren
 * @Date:   2020-07-11 10:55:13
-* @Last Modified time: 2020-07-11 11:42:53
+* @Last Modified time: 2020-07-11 13:36:57
 */
-#include <bits/stdc++.h>
-using namespace std;
-#define rep(i,a,n) for(int i = a; i< n; i++)
-#define per(i,a,n) for(int i=n-1; i>=a; i--)
-#define pb push_back
-#define mp make_pair
-#define all(x) (x).begin(), (x).end()
-#define fi first
-#define se second
-#define sz(x) ((int)(x).size())
-typedef vector<int> VI;
-typedef long long ll;
-typedef pair<int, int> PII;
-typedef double db;
-mt19937 mrand(random_device{}());
-const ll mod = 1000000007;
-int rnd(int x) { return mrand() % x;}
-ll mulmod(ll a, ll b) {ll res=0;a%=mod;assert(b>=0);for(;b;b>>=1){if(b&1)res=(res+a)%mod;a=2*a%mod;}return res;}
-ll powmod(ll a, ll b) {ll res=1;a%=mod;assert(b>=0);for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
-ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
-//snippet-head
+#include <iostream>
+#include <cstring>
 
+using namespace std;
 
 const int INF = 0x3f3f3f3f;
 char g[10][10];
@@ -45,7 +27,9 @@ int solve(){
         char backup[10][10];
         memcpy(backup, g, sizeof g);  
         for(int j = 0; j < 5; j++)
-            if(k >> j & 1){
+            if(!(k >> j & 1)){   //处理第一行 也可写为 if(k >> j & 1) 
+            //其实这行代码的意思就是枚举第一行所有的按法
+            //无论是1 是 0也好，因为按后会影响左右的灯。所以只需要指数型枚举32个状态就行。
                 res ++ ;
                 turn(0, j); 
             }
