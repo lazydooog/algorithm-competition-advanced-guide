@@ -2,7 +2,7 @@
 * @Description: 102. 最佳牛围栏
 * @Author: Xiaobin Ren
 * @Date:   2020-07-12 08:40:23
-* @Last Modified time: 2020-07-12 10:16:23
+* @Last Modified time: 2020-07-12 10:36:31
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -26,6 +26,11 @@ ll powmod(ll a, ll b) {ll res=1;a%=mod;assert(b>=0);for(;b;b>>=1){if(b&1)res=res
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //snippet-head
 
+/*
+    问题核心在于求最大子段和的“平均值”最大 而不是子段和最大。
+    只需要最大子段和大于0，也就是存在，然后二分mid求最大的平均值即可
+    数列减去mid后，寻找一个子段和>0的子段即可，要求这个问题，只需要最大的子段和>0即可，也就是存在。
+*/
 const int N = 100010;
 
 int n, m;
