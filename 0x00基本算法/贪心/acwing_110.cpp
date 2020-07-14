@@ -2,7 +2,7 @@
 * @Description: 110. 防晒
 * @Author: Xiaobin Ren
 * @Date:   2020-07-14 10:38:02
-* @Last Modified time: 2020-07-14 10:38:22
+* @Last Modified time: 2020-07-14 17:26:24
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -27,11 +27,59 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //snippet-head
 
 
-
+const int N = 2510;
+PII cows[N];
+int n,m;
 
 int main(){
-	//ios::sync_with_stdio(false);
-	//cin.tie(0);
-
-	
+    cin >> n >> m;
+    for(int i = 0; i < n; i++) cin >> cows[i].first >> cows[i].second;
+    sort(cows, cows + n);
+    
+    map<int, int> spfs;
+    for(int i = 0; i < m; i++){
+        int spf, cover;
+        cin >> spf >> cover;
+        spfs[spf] += cover;   //这里要用 + ，可能有先相同的 spf 值
+        
+    }
+    
+    int res = 0;
+    for(int i = n - 1; i >=0; i--){
+        auto cow = cows[i];
+        auto it = spfs.upper_bound(cow.second);
+        it -- ;
+        if(it->first >= cow.first && it->first <= cow.second){
+            res ++;
+            if(-- it->second == 0) spfs.erase(it);
+        }
+        
+    }
+    cout << res << endl;
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
