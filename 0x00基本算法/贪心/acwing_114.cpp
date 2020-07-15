@@ -1,8 +1,8 @@
 /*
-* @Description: 
+* @Description: 114. 国王游戏
 * @Author: Xiaobin Ren
 * @Date:   2020-07-15 10:53:46
-* @Last Modified time: 2020-07-15 10:54:02
+* @Last Modified time: 2020-07-15 10:58:35
 */
 #include <bits/stdc++.h>
 using namespace std;
