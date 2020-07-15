@@ -2,7 +2,7 @@
 * @Description: 115. 给树染色
 * @Author: Xiaobin Ren
 * @Date:   2020-07-15 21:22:27
-* @Last Modified time: 2020-07-15 21:24:02
+* @Last Modified time: 2020-07-15 22:15:09
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -26,6 +26,14 @@ ll powmod(ll a, ll b) {ll res=1;a%=mod;assert(b>=0);for(;b;b>>=1){if(b&1)res=res
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //snippet-head
 
+/*
+	这个贪心题，不要被树节点的顺序套进去
+	对于一个给定的树，染色方法是唯一的，先每次找到均值最大的节点，然后和其父节点合并
+	不需要理会根节点，直接合并 n - 1 次，最后肯定会合并为一个点，而且这个点必定为根节点。
+	为什么一定到最后的时候，权值最大的点一定是根节点呢？因为合并的过程总是“自下而上”的合并。
+	也就是说既然父节点染色后才能染色子节点，那么就逆向思维，先把最大的子节点染色，然后立马染色父节点，直到最后一直向上合并到
+	父节点。 好了，现在我们把刚才的过程全部逆推，那么逆推的过程就是从“根节点” 开始染色的过程，也就是最优解的染色路径了。
+*/
 const int N = 1010;
 
 int n, root;
