@@ -2,7 +2,7 @@
 * @Description: 115. 给树染色
 * @Author: Xiaobin Ren
 * @Date:   2020-07-15 21:22:27
-* @Last Modified time: 2020-07-15 21:23:08
+* @Last Modified time: 2020-07-15 21:24:02
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -69,7 +69,7 @@ int main(){
         int ver = find();
         int f = nodes[ver].father;
         res += nodes[ver].sum * nodes[f].size;
-        nodes[ver].avg = -1;  //下一次find就不会再找这个节点了 随便复制一个很小的数
+        nodes[ver].avg = -1;  //下一次find就不会再找这个节点了 随便赋值一个很小的数
         for(int j = 1; j <= n; j++)
             if(nodes[j].father == ver) nodes[j].father = f; //合并根节点
         nodes[f].sum += nodes[ver].sum;
