@@ -2,7 +2,7 @@
 * @Description: 41. 包含min函数的栈 
 * @Author: Xiaobin Ren
 * @Date:   2020-07-21 13:04:17
-* @Last Modified time: 2020-07-21 13:04:34
+* @Last Modified time: 2020-07-21 13:33:42
 */
 class MinStack {
 public:
@@ -11,7 +11,7 @@ public:
     stack<int> stk, stk_min;
     
     MinStack() {
-        
+         
     }
     
     void push(int x) {
