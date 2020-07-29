@@ -2,7 +2,7 @@
 * @Description: 137. 雪花雪花雪花
 * @Author: Xiaobin Ren
 * @Date:   2020-07-28 23:50:11
-* @Last Modified time: 2020-07-28 23:50:25
+* @Last Modified time: 2020-07-29 09:24:24
 */
 #include <iostream>
 #include <algorithm>
@@ -30,12 +30,12 @@ bool cmp(int a, int b){
 }
 
 
-void get_min(int a[]){
+void get_min(int a[]){//字符串最小表示
     static int b[12];
     for(int i = 0; i < 12; i++) b[i] = a[i % 6];  //a数组复制2次 到b数组
     int i = 0, j = 1, k;
     while(i < 6  && j < 6){
-        for(int k = 0; k < 6 && b[i + k] == b[j + k]; k++);
+        for( k = 0; k < 6 && b[i + k] == b[j + k]; k++);
         if(k == 6) break;
         if(b[i + k] > b[j + k]){
             i += k + 1;
